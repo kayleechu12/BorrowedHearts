@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BHConsole", "BHConsole\BHConsole.csproj", "{FF003EFA-C410-4AD5-A7C4-3E2D07C84561}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF003EFA-C410-4AD5-A7C4-3E2D07C84561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF003EFA-C410-4AD5-A7C4-3E2D07C84561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF003EFA-C410-4AD5-A7C4-3E2D07C84561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF003EFA-C410-4AD5-A7C4-3E2D07C84561}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BCBA9C47-6D55-476C-BB66-876E9CFBCFC8}
+	EndGlobalSection
+EndGlobal
