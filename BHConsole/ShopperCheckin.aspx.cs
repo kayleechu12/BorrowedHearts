@@ -13,5 +13,10 @@ namespace BHConsole
         {
 
         }
+
+        protected void btn_checkin_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
