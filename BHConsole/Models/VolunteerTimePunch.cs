@@ -24,33 +24,74 @@ namespace BHConsole.Models
 
         public static void ClockIn(VolunteerTimePunch vtp, SqlConnection conn)
         {
-            //Only adds the volunteer object right now
-            //TODO: Create a timePunch and add that to the VolunteerTimePunch object, add insert for the time_punch and volunteer_time_punch tables
-
-            //Creates volunteer object and inserts it into the corresponding table and keeps track of the id to use for foreign keys
-            string volunteerSQL = "INSERT INTO volunteer (name, phone, email) VALUES (@Name, @Phone, @Email) SELECT SCOPE_IDENTITY()";
+            string newVolunteerSQL = "SELECT id FROM volunteer WHERE name = @name";
+            string id = ""; //just use volunteerId?
             string volunteerId = "";
             string timePunchId = "";
-            //NOTE: Surely there is a better way to keep track of ids for foreign keys than using select scope_identity
-            //TODO: Data validation
-            using (SqlCommand cmd = new SqlCommand(volunteerSQL, conn))
+            using (SqlCommand cmd = new SqlCommand(newVolunteerSQL, conn))
             {
-                cmd.Parameters.AddWithValue("@Name", vtp.volunteer.Name);
-                cmd.Parameters.AddWithValue("@Phone", vtp.volunteer.Phone);
-                cmd.Parameters.AddWithValue("@Email", vtp.volunteer.Email);
-                
+                cmd.Parameters.AddWithValue("@name", vtp.volunteer.Name);
                 try
                 {
                     conn.Open();
-                    volunteerId = cmd.ExecuteScalar().ToString();
+                    id = cmd.ExecuteScalar().ToString();
                 }
                 finally
                 {
                     conn.Close();
                 }
             }
+            //TODO: Check if volunteer is currently clocked in
 
-            //If volunteerId is still empty here there is an error
+            if (id.Length == 0)
+            {
+                //The volunteer's name is unique, create a new entry
+                //Creates volunteer object and inserts it into the corresponding table and keeps track of the id to use for foreign keys
+                string volunteerSQL = "INSERT INTO volunteer (name, phone, email) VALUES (@Name, @Phone, @Email) SELECT SCOPE_IDENTITY()";
+                //NOTE: Surely there is a better way to keep track of ids for foreign keys than using select scope_identity
+                //TODO: Data validation
+                using (SqlCommand cmd = new SqlCommand(volunteerSQL, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Name", vtp.volunteer.Name);
+                    cmd.Parameters.AddWithValue("@Phone", vtp.volunteer.Phone);
+                    cmd.Parameters.AddWithValue("@Email", vtp.volunteer.Email);
+
+                    try
+                    {
+                        conn.Open();
+                        volunteerId = cmd.ExecuteScalar().ToString();
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+                }
+
+            }
+            else
+            {
+                //The volunteer's name has been used before, update the entry
+                string volunteerSQL = "UPDATE volunteer SET phone = @phone, email = @email WHERE name = @name";
+                //NOTE: Surely there is a better way to keep track of ids for foreign keys than using select scope_identity
+                //TODO: Data validation
+                using (SqlCommand cmd = new SqlCommand(volunteerSQL, conn))
+                {
+                    cmd.Parameters.AddWithValue("@name", vtp.volunteer.Name);
+                    cmd.Parameters.AddWithValue("@phone", vtp.volunteer.Phone);
+                    cmd.Parameters.AddWithValue("@email", vtp.volunteer.Email);
+
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        volunteerId = id;
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+                }
+            }
 
             //TimePunch -- do we need the model?
             string timePunchSQL = "INSERT INTO time_punch (time_in, time_punch_type) VALUES (GETDATE(), @Type) SELECT SCOPE_IDENTITY()";
