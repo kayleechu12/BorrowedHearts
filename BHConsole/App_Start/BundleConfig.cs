@@ -34,8 +34,8 @@ namespace BHConsole
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                             "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/bootstrap-minty.css"));
+            bundles.Add(new StyleBundle("~/Content/css/minty").Include(
+                "~/Content/minty.css"));
         }
     }
 }
