@@ -9,16 +9,16 @@
     <title><%: Page.Title %></title>
 
     <asp:PlaceHolder runat="server">
-        <%: Styles.Render("~/Content/css") %>
+        <%: Styles.Render("~/Content/css/minty") %>
         <%: Scripts.Render("~/bundles/modernizr") %>
         
     </asp:PlaceHolder>
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:bundlereference runat="server" path="~/Content/css/minty" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <script src="Scripts/jquery-3.4.1.js"></script>
+    <%--<script src="Scripts/jquery-3.4.1.js"></script>
     <script src="Scripts/bootstrap.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
-    <script src="Scripts/popper.js"></script>
+    <script src="Scripts/popper.js"></script>--%>
 
     <style>
         body {
