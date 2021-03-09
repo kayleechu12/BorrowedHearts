@@ -13,11 +13,11 @@ namespace BHConsole.Models
 
         public VolunteerTimePunch(string name, string phone, string email)
         {
-            volunteer = new Volunteer();
+            this.volunteer = new Volunteer();
             this.volunteer.Name = name;
             this.volunteer.Phone = phone;
             this.volunteer.Email = email;
-            timePunch = new TimePunch();
+            this.timePunch = new TimePunch();
             this.timePunch.ClockInTime = System.DateTime.Now;
             this.timePunch.Type = 1;
         }
@@ -34,7 +34,7 @@ namespace BHConsole.Models
                 try
                 {
                     conn.Open();
-                    id = cmd.ExecuteScalar().ToString();
+                    volunteerId = Convert.ToString(cmd.ExecuteScalar());
                 }
                 finally
                 {
@@ -43,7 +43,7 @@ namespace BHConsole.Models
             }
             //TODO: Check if volunteer is currently clocked in
 
-            if (id.Length == 0)
+            if (volunteerId.Length == 0)
             {
                 //The volunteer's name is unique, create a new entry
                 //Creates volunteer object and inserts it into the corresponding table and keeps track of the id to use for foreign keys
@@ -84,7 +84,7 @@ namespace BHConsole.Models
                     {
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        volunteerId = id;
+                        //volunteerId = id;
                     }
                     finally
                     {
