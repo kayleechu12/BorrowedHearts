@@ -24,105 +24,18 @@ namespace BHConsole.Models
 
         public static void ClockIn(VolunteerTimePunch vtp, SqlConnection conn)
         {
-            string newVolunteerSQL = "SELECT id FROM volunteer WHERE name = @name";
-            string id = ""; //just use volunteerId?
-            string volunteerId = "";
-            string timePunchId = "";
-            using (SqlCommand cmd = new SqlCommand(newVolunteerSQL, conn))
+            string volunteerSQL = "EXEC VolunteerClockin @Name, @Phone, @Email";
+            //TODO: Data validation
+            using (SqlCommand cmd = new SqlCommand(volunteerSQL, conn))
             {
-                cmd.Parameters.AddWithValue("@name", vtp.volunteer.Name);
-                try
-                {
-                    conn.Open();
-                    volunteerId = Convert.ToString(cmd.ExecuteScalar());
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-            //TODO: Check if volunteer is currently clocked in
-
-            if (volunteerId.Length == 0)
-            {
-                //The volunteer's name is unique, create a new entry
-                //Creates volunteer object and inserts it into the corresponding table and keeps track of the id to use for foreign keys
-                string volunteerSQL = "INSERT INTO volunteer (name, phone, email) VALUES (@Name, @Phone, @Email) SELECT SCOPE_IDENTITY()";
-                //NOTE: Surely there is a better way to keep track of ids for foreign keys than using select scope_identity
-                //TODO: Data validation
-                using (SqlCommand cmd = new SqlCommand(volunteerSQL, conn))
-                {
-                    cmd.Parameters.AddWithValue("@Name", vtp.volunteer.Name);
-                    cmd.Parameters.AddWithValue("@Phone", vtp.volunteer.Phone);
-                    cmd.Parameters.AddWithValue("@Email", vtp.volunteer.Email);
-
-                    try
-                    {
-                        conn.Open();
-                        volunteerId = cmd.ExecuteScalar().ToString();
-                    }
-                    finally
-                    {
-                        conn.Close();
-                    }
-                }
-
-            }
-            else
-            {
-                //The volunteer's name has been used before, update the entry
-                string volunteerSQL = "UPDATE volunteer SET phone = @phone, email = @email WHERE name = @name";
-                //NOTE: Surely there is a better way to keep track of ids for foreign keys than using select scope_identity
-                //TODO: Data validation
-                using (SqlCommand cmd = new SqlCommand(volunteerSQL, conn))
-                {
-                    cmd.Parameters.AddWithValue("@name", vtp.volunteer.Name);
-                    cmd.Parameters.AddWithValue("@phone", vtp.volunteer.Phone);
-                    cmd.Parameters.AddWithValue("@email", vtp.volunteer.Email);
-
-                    try
-                    {
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                        //volunteerId = id;
-                    }
-                    finally
-                    {
-                        conn.Close();
-                    }
-                }
-            }
-
-            //TimePunch -- do we need the model?
-            string timePunchSQL = "INSERT INTO time_punch (time_in, time_punch_type) VALUES (GETDATE(), @Type) SELECT SCOPE_IDENTITY()";
-            using (SqlCommand cmd = new SqlCommand(timePunchSQL, conn))
-            {
-                //cmd.Parameters.AddWithValue("@In", vtp.timePunch.ClockInTime);
-                cmd.Parameters.AddWithValue("@Type", vtp.timePunch.Type);
+                cmd.Parameters.AddWithValue("@Name", vtp.volunteer.Name);
+                cmd.Parameters.AddWithValue("@Phone", vtp.volunteer.Phone);
+                cmd.Parameters.AddWithValue("@Email", vtp.volunteer.Email);
 
                 try
                 {
                     conn.Open();
-                    timePunchId = cmd.ExecuteScalar().ToString();
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-
-            //VolunteerTimePunch
-            string volunteerTimePunchSQL = "INSERT INTO volunteer_time_punch (volunteer_id, time_punch_id) VALUES (@volunteer_id, @time_punch_id)";
-            using (SqlCommand cmd = new SqlCommand(volunteerTimePunchSQL, conn))
-            {
-                cmd.Parameters.AddWithValue("@volunteer_id", volunteerId);
-                cmd.Parameters.AddWithValue("@time_punch_id", timePunchId);
-                
-
-                try
-                {
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
+                    cmd.ExecuteScalar();
                 }
                 finally
                 {
@@ -131,31 +44,13 @@ namespace BHConsole.Models
             }
         }
 
-        public static void ClockOut(string name, SqlConnection conn)
+        public static void ClockOut(Int64 id, SqlConnection conn)
         {
-            //Get the TP ID
-            string TimePunchSQL = "SELECT t.id FROM((dbo.volunteer_time_punch vtp INNER JOIN dbo.volunteer v ON vtp.volunteer_id = v.id) INNER JOIN time_punch t ON vtp.time_punch_id = t.id) WHERE time_out IS NULL AND name = @Name";
-            string timePunchId = "";
-            using (SqlCommand cmd = new SqlCommand(TimePunchSQL, conn))
-            {
-                cmd.Parameters.AddWithValue("@Name", name);
-
-                try
-                {
-                    conn.Open();
-                    timePunchId = cmd.ExecuteScalar().ToString();
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-
             //Update the correct time_punch using the id
             string updateSQL = "UPDATE time_punch SET time_out = GETDATE() WHERE id = @id";
             using (SqlCommand cmd = new SqlCommand(updateSQL, conn))
             {
-                cmd.Parameters.AddWithValue("@id", timePunchId);
+                cmd.Parameters.AddWithValue("@id", id);
 
                 try
                 {
@@ -168,6 +63,5 @@ namespace BHConsole.Models
                 }
             }
         }
-
     }
 }
