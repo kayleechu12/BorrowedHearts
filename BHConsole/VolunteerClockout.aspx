@@ -12,14 +12,9 @@
                     </div>
                     <div class="bs-component">
                         <div class="form-group">
-                            <asp:DropDownList ID="dd_clockedin" CssClass="form-control" runat="server" DataSourceID="BHDBsource" DataTextField="Name" DataValueField="Name" style="margin-bottom: 0"></asp:DropDownList>
-                            <asp:SqlDataSource ID="BHDBsource" runat="server" ConnectionString="<%$ ConnectionStrings:BHDBConnectionString %>" SelectCommand="SELECT v.name
-FROM ((dbo.volunteer_time_punch vtp
-INNER JOIN dbo.volunteer v
-ON vtp.volunteer_id = v.id)
-INNER JOIN time_punch t
-ON vtp.time_punch_id = t.id)
-WHERE time_out IS NULL"></asp:SqlDataSource>
+                            <asp:DropDownList ID="dd_clockedin" CssClass="form-control" runat="server" DataSourceID="BHDBsource" DataTextField="name" DataValueField="time_punch_id" style="margin-bottom: 0"></asp:DropDownList>
+                            <asp:SqlDataSource ID="BHDBsource" runat="server" ConnectionString="<%$ ConnectionStrings:BHDBConnectionString %>" SelectCommand="SELECT name, time_punch_id FROM view_all_volunteer_clocks WHERE (time_out IS NULL)">    
+                            </asp:SqlDataSource>
                         </div>
                         <div class="form-group">
                             <asp:Button ID="btn_clockout" class="btn btn-primary btn-lg btn-block" runat="server" Text="Clock Out" OnClick="btn_clockout_Click" />

@@ -22,7 +22,7 @@ namespace BHConsole
         {
             if (dd_clockedin.SelectedValue != null)
             {
-                VolunteerTimePunch.ClockOut(dd_clockedin.SelectedValue, Connection.GetConnection().conn);
+                VolunteerTimePunch.ClockOut(Convert.ToInt64(dd_clockedin.SelectedValue), Connection.GetConnection().conn);
             }
             //TODO: Redirect to dashboard or something
             Response.Redirect("~/Volunteers.aspx");
