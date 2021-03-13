@@ -528,7 +528,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Connection.cs" />
+    <Compile Include="Models\Shopper.cs" />
+    <Compile Include="Models\ShopperVisit.cs" />
     <Compile Include="Models\TimePunch.cs" />
+    <Compile Include="Models\Visit.cs" />
     <Compile Include="Models\Volunteer.cs" />
     <Compile Include="Models\VolunteerTimePunch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

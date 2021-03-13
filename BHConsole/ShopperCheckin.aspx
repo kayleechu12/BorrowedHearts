@@ -13,7 +13,7 @@
                     </div>
                     <div class="bs-component">
                         <%--Name--%>
-                        <div class="card">
+                        <div class="card border-primary">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="txt_name">Name</label><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage=" * Required Field" ControlToValidate="txt_name" CssClass="text-danger"></asp:RequiredFieldValidator>
@@ -23,7 +23,7 @@
                         </div>
                         <br />
                         <%--Email--%>
-                        <div class="card">
+                        <div class="card border-info">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="txt_email">Email</label><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage=" * Required Field" ControlToValidate="txt_email" CssClass="text-danger"></asp:RequiredFieldValidator>
@@ -33,7 +33,7 @@
                         </div>
                         <br />
                         <%--Phone--%>
-                        <div class="card">
+                        <div class="card border-primary">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="txt_phone">Phone Number</label>
@@ -43,7 +43,7 @@
                         </div>
                         <br />
                         <%--Address--%>
-                        <div class="card">
+                        <div class="card border-info">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="txt_address">Address</label>
@@ -53,7 +53,7 @@
                         </div>
                         <br />
                         <%--First time?--%>
-                        <div class="card">
+                        <div class="card border-primary">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Is this your first time visiting Borrowed Hearts?</label> <%--Need to set as required field--%>
@@ -74,7 +74,7 @@
                         </div>
                         <br />
                         <%--Number of children--%>
-                        <div class="card">
+                        <div class="card border-info">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="txt_numberOfChildren">Number of children you are shopping for?</label><asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage=" * Required Field" ControlToValidate="txt_email" CssClass="text-danger"></asp:RequiredFieldValidator>
@@ -84,7 +84,7 @@
                         </div>
                         <br />
                         <%--case worker--%>
-                        <div class="card">
+                        <div class="card border-primary">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="txt_caseWorker">Case Worker</label><asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage=" * Required Field" ControlToValidate="txt_caseWorker" CssClass="text-danger"></asp:RequiredFieldValidator>
@@ -94,7 +94,7 @@
                         </div>
                         <br />
                         <%--relationship to children--%>
-                        <div class="card">
+                        <div class="card border-info">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Relationship to Children</label> <%--Need to set as required field--%>

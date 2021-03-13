@@ -36,6 +36,9 @@ namespace BHConsole
 
             bundles.Add(new StyleBundle("~/Content/css/minty").Include(
                 "~/Content/minty.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/site").Include(
+                "~/Content/Site.css"));
         }
     }
 }
