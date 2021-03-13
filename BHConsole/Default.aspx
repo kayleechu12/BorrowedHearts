@@ -7,11 +7,11 @@
         <div class="row">
             <div class="col-lg-6">
                 <h2>Here to shop?</h2>
-                <asp:Button ID="btn_shop" class="btn btn-primary btn-large btn-block" runat="server" Text="Shopper Form" PostBackUrl="~/ShopperCheckin.aspx" />
+                <asp:Button ID="btn_shop" class="btn btn-primary btn-lg btn-huge btn-block" runat="server" Text="Shopper Form" PostBackUrl="~/ShopperCheckin.aspx" />
             </div>
             <div class="col-lg-6">
                 <h2>Here to volunteer?</h2>
-                <asp:Button ID="btn_volunteer" class="btn btn-success btn-large btn-block" runat="server" Text="Volunteer Clock In" PostBackUrl="~/VolunteerClockin.aspx" />
+                <asp:Button ID="btn_volunteer" class="btn btn-success btn-lg btn-huge btn-block" runat="server" Text="Volunteer Clock In" PostBackUrl="~/VolunteerClockin.aspx" />
             </div>
         </div>
         <br />

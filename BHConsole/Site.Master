@@ -10,40 +10,12 @@
 
     <asp:PlaceHolder runat="server">
         <%: Styles.Render("~/Content/css/minty") %>
+        <%: Styles.Render("~/Content/css/site") %>
         <%: Scripts.Render("~/bundles/modernizr") %>
         
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css/minty" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <%--<script src="Scripts/jquery-3.4.1.js"></script>
-    <script src="Scripts/bootstrap.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
-    <script src="Scripts/popper.js"></script>--%>
-
-    <style>
-        body {
-        width: 100%;
-        margin: 5px;
-        }
-
-        .table-condensed tr th {
-        border: 0px solid #6e7bd9;
-        color: white;
-        background-color: #6e7bd9;
-        }
-
-        .table-condensed, .table-condensed tr td {
-        border: 0px solid #000;
-        }
-
-        tr:nth-child(even) {
-        background: #f8f7ff
-        }
-
-        tr:nth-child(odd) {
-        background: #fff;
-        }
-    </style>
 
 </head>
 <body>
