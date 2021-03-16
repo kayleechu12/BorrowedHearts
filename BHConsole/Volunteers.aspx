@@ -14,13 +14,11 @@
         <br />
         <div class="row">
             <div class="col">
-
             </div>
             <div class="col-lg-6">
-                <asp:LinkButton ID="LinkButton3" CssClass="btn btn-info btn-lg btn-block" runat="server" PostBackUrl="~/VolunteerOverview.aspx">Overview (admin stuff)</asp:LinkButton>
+                <asp:LinkButton ID="LinkButton3" CssClass="btn btn-info btn-lg btn-block" runat="server" PostBackUrl="~/VolunteerOverview.aspx" Enabled="False" Visible="False">Admin</asp:LinkButton>
             </div>
             <div class="col">
-
             </div>
         </div>
     </div>

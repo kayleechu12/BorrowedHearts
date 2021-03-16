@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col">
                 <h3>All Volunteers</h3>
-                <asp:GridView ID="GridView1" CssClass="table table-condensed table-hover" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" EmptyDataText="There are no data records to display." AllowSorting="True" AllowPaging="True">
+                <asp:GridView ID="GridView1" CssClass="table table-condensed table-hover" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" EmptyDataText="There are no data records to display." AllowSorting="True" AllowPaging="True" HeaderStyle-CssClass="text-info">
                     <Columns>
                         <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                         <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
@@ -38,63 +38,34 @@
                 <h3>Clocked In Volunteers</h3>
                 <asp:GridView ID="GridView4" CssClass="table table-condensed table-hover" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource3" EmptyDataText="There are no records to display right now.">
                     <Columns>
-                        <asp:BoundField DataField="Volunteer ID" HeaderText="Volunteer ID" SortExpression="Volunteer ID" />
                         <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                         <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
                         <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-                        <asp:BoundField DataField="Time Punch ID" HeaderText="Time Punch ID" SortExpression="Time Punch ID" />
-                        <asp:BoundField DataField="Time In" HeaderText="Time In" SortExpression="Time In" />
+                        <asp:BoundField DataField="Time In" HeaderText="Time In" SortExpression="Time In" ReadOnly="True" />
                     </Columns>
                 </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:BHDBConnectionString %>" SelectCommand="SELECT volunteer_id AS [Volunteer ID], name AS Name, phone AS Phone, email AS Email, time_punch_id AS [Time Punch ID], time_in AS [Time In] FROM view_all_volunteer_clocks WHERE (time_out IS NULL)"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:BHDBConnectionString %>" SelectCommand="SELECT name AS [Name], phone AS [Phone], email AS [Email], [Time In] FROM view_volunteer_clocks WHERE ([Time Out] IS NULL) ORDER BY [Time In]"></asp:SqlDataSource>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <h3>All Time Punches</h3>
-                <asp:GridView ID="GridView5" CssClass="table table-condensed table-hover" runat="server" AutoGenerateColumns="False" DataKeyNames="id" EmptyDataText="There are no data records to display." DataSourceID="SqlDataSource2">
+                <h3>Volunteer Time Punches</h3>
+                <asp:GridView ID="GridView5" CssClass="table table-condensed table-hover" runat="server" AutoGenerateColumns="False" EmptyDataText="There are no data records to display." DataSourceID="SqlDataSource2">
                     <Columns>
-                        <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
-                        <asp:BoundField DataField="time_in" HeaderText="time_in" SortExpression="time_in" />
-                        <asp:BoundField DataField="time_out" HeaderText="time_out" SortExpression="time_out" />
-                        <asp:BoundField DataField="time_punch_type" HeaderText="time_punch_type" SortExpression="time_punch_type" />
-                        <asp:CommandField ShowDeleteButton="True" />
+                        <asp:BoundField DataField="Date" HeaderText="Date" ReadOnly="True" SortExpression="Date" />
+                        <asp:BoundField DataField="Time In" HeaderText="Time In" SortExpression="Time In" ReadOnly="True" />
+                        <asp:BoundField DataField="Time Out" HeaderText="Time Out" SortExpression="Time Out" ReadOnly="True" />
+                        <asp:BoundField DataField="Hours" HeaderText="Hours" SortExpression="Hours" ReadOnly="True" />
+                        <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                     </Columns>
                 </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:BHDBConnectionString %>" DeleteCommand="DELETE FROM [time_punch] WHERE [id] = @id" InsertCommand="INSERT INTO [time_punch] ([time_in], [time_out], [time_punch_type]) VALUES (@time_in, @time_out, @time_punch_type)" SelectCommand="SELECT * FROM [time_punch]" UpdateCommand="UPDATE [time_punch] SET [time_in] = @time_in, [time_out] = @time_out, [time_punch_type] = @time_punch_type WHERE [id] = @id">
-                    <DeleteParameters>
-                        <asp:Parameter Name="id" Type="Int64" />
-                    </DeleteParameters>
-                    <InsertParameters>
-                        <asp:Parameter Name="time_in" Type="DateTime" />
-                        <asp:Parameter Name="time_out" Type="DateTime" />
-                        <asp:Parameter Name="time_punch_type" Type="Byte" />
-                    </InsertParameters>
-                    <UpdateParameters>
-                        <asp:Parameter Name="time_in" Type="DateTime" />
-                        <asp:Parameter Name="time_out" Type="DateTime" />
-                        <asp:Parameter Name="time_punch_type" Type="Byte" />
-                        <asp:Parameter Name="id" Type="Int64" />
-                    </UpdateParameters>
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:BHDBConnectionString %>" SelectCommand="SELECT date AS Date, [Time In], [Time Out], Hours, name AS Name FROM view_volunteer_clocks">
                 </asp:SqlDataSource>
 
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <h3>All Volunteer Time Punches</h3>
-                <asp:GridView ID="GridView3" CssClass="table table-condensed table-hover" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource4" EmptyDataText="There are no records to display right now." AllowPaging="True" AllowSorting="True">
-                    <Columns>
-                        <asp:BoundField DataField="Volunteer ID" HeaderText="Volunteer ID" SortExpression="Volunteer ID" />
-                        <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-                        <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
-                        <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-                        <asp:BoundField DataField="Time Punch ID" HeaderText="Time Punch ID" SortExpression="Time Punch ID" />
-                        <asp:BoundField DataField="Time In" HeaderText="Time In" SortExpression="Time In" />
-                        <asp:BoundField DataField="Time Out" HeaderText="Time Out" SortExpression="Time Out" />
-                    </Columns>
-                </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:BHDBConnectionString %>" SelectCommand="SELECT volunteer_id AS [Volunteer ID], name AS Name, phone AS Phone, email AS Email, time_punch_id AS [Time Punch ID], time_in AS [Time In], time_out AS [Time Out] FROM view_all_volunteer_clocks ORDER BY [Time In]"></asp:SqlDataSource>
             </div>
         </div>
     </div>
