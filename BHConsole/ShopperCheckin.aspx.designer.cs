@@ -42,6 +42,15 @@ namespace BHConsole
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
+        /// RegularExpressionValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+
+        /// <summary>
         /// txt_email control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace BHConsole
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_email;
+
+        /// <summary>
+        /// RegularExpressionValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
 
         /// <summary>
         /// txt_phone control.
@@ -69,22 +87,22 @@ namespace BHConsole
         protected global::System.Web.UI.WebControls.TextBox txt_address;
 
         /// <summary>
-        /// rb_firstYes control.
+        /// RequiredFieldValidator3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rb_firstYes;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
 
         /// <summary>
-        /// rb_firstNo control.
+        /// rbl_firstTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rb_firstNo;
+        protected global::System.Web.UI.WebControls.RadioButtonList rbl_firstTime;
 
         /// <summary>
         /// RequiredFieldValidator6 control.
@@ -123,58 +141,22 @@ namespace BHConsole
         protected global::System.Web.UI.WebControls.TextBox txt_caseWorker;
 
         /// <summary>
-        /// rb_licensedFosterParent control.
+        /// RequiredFieldValidator4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rb_licensedFosterParent;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
 
         /// <summary>
-        /// rb_relativeKinship control.
+        /// rbl_relationship control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rb_relativeKinship;
-
-        /// <summary>
-        /// rb_caseworker control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rb_caseworker;
-
-        /// <summary>
-        /// rb_irelandMaglingerRaintree control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rb_irelandMaglingerRaintree;
-
-        /// <summary>
-        /// rb_casa control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rb_casa;
-
-        /// <summary>
-        /// rb_other control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rb_other;
+        protected global::System.Web.UI.WebControls.RadioButtonList rbl_relationship;
 
         /// <summary>
         /// txt_other control.

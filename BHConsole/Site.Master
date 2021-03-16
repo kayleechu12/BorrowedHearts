@@ -12,14 +12,14 @@
         <%: Styles.Render("~/Content/css/minty") %>
         <%: Styles.Render("~/Content/css/site") %>
         <%: Scripts.Render("~/bundles/modernizr") %>
-        
+
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css/minty" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
 <body>
-    <form runat="server">
+    <form id="form1" runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -51,6 +51,7 @@
                     <asp:LinkButton CssClass="nav-link" ID="LinkButton1" runat="server" PostBackUrl="~/Default.aspx" CausesValidation="false">Dashboard</asp:LinkButton>
                     <asp:LinkButton CssClass="nav-link" ID="LinkButton2" runat="server" PostBackUrl="~/ShopperCheckin.aspx" CausesValidation="false">Shoppers</asp:LinkButton>
                     <asp:LinkButton CssClass="nav-link" ID="LinkButton3" runat="server" PostBackUrl="~/Volunteers.aspx" CausesValidation="false">Volunteers</asp:LinkButton>
+                    <asp:LinkButton CssClass="nav-link" ID="LinkButton5" runat="server" PostBackUrl="~/Administrator.aspx" CausesValidation="false">Admin</asp:LinkButton>
                 </ul>
             </div>
         </nav>
@@ -62,7 +63,19 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now %> - TEST FOOTER PLEASE IGNORE</p>
+                <%--<p>&copy; <%: DateTime.Now %> - TEST FOOTER PLEASE IGNORE</p>--%>
+                <div class="row">
+                    <div class="col">
+
+                    </div>
+                    <div class="col">
+                         <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/bhf-logo.png" />
+                    </div>
+                    <div class="col">
+
+                    </div>
+                   
+                </div>
             </footer>
         </div>
     </form>

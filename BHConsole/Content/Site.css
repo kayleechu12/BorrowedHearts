@@ -4,24 +4,25 @@
 }
 
 .table-condensed tr th {
-    border: 0px solid #6e7bd9;
-    color: white;
-    background-color: #6e7bd9;
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: #fce2e3;
 }
 
 .table-condensed, .table-condensed tr td {
-    border: 0px solid #000;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 tr:nth-child(even) {
-    background: #f8f7ff
+    background: #f8f7ff;
 }
 
 tr:nth-child(odd) {
-    background: #fff;
+    background: white;
 }
 
 .btn-huge{
-    padding-top:25px;
-    padding-bottom:25px;
+    padding-top:40px;
+    padding-bottom:40px;
 }
