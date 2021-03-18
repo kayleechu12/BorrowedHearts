@@ -25,14 +25,15 @@
                 <fieldset>
                     <legend>Check In Form</legend>
                     <div class="form-group">
-                        <small>Please fill in the information below and the store clerk will guide you in the right direction.</small>
+                        <p>Please fill in the information below and the store clerk will guide you in the right direction. </p><%--<asp:Label ID="Label7" runat="server" Text="Fields marked with * are required" CssClass="text-danger"></asp:Label>--%>
                     </div>
                     <div class="bs-component">
                         <%--Name--%>
                         <div class="card border-primary">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="txt_name"><strong>Name</strong></label><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage=" * Required Field" ControlToValidate="txt_name" CssClass="text-danger"></asp:RequiredFieldValidator>
+                                    <label for="txt_name"><strong>Name</strong></label><asp:Label ID="Label1" runat="server" Text=" * " Font-Bold="True" CssClass="text-danger"></asp:Label>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required Field" ControlToValidate="txt_name" CssClass="text-danger"></asp:RequiredFieldValidator>
                                     <asp:TextBox ID="txt_name" class="form-control" runat="server" placeholder="First Last"></asp:TextBox>
                                 </div>
                             </div>
@@ -42,9 +43,9 @@
                         <div class="card border-info">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="txt_email"><strong>Email</strong></label>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage=" * Required Field" ControlToValidate="txt_email" CssClass="text-danger"></asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="txt_email" Text=" * Invalid Email Format" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" CssClass="text-danger"></asp:RegularExpressionValidator>                              
+                                    <label for="txt_email"><strong>Email</strong></label><asp:Label ID="Label2" runat="server" Text=" * " Font-Bold="True" CssClass="text-danger"></asp:Label>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required Field" ControlToValidate="txt_email" CssClass="text-danger"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="txt_email" Text=" Invalid Email Format" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" CssClass="text-danger"></asp:RegularExpressionValidator>                              
                                     <asp:TextBox ID="txt_email" runat="server" placeholder="JaneDoe@example.net" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
@@ -55,7 +56,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="txt_phone"><strong>Phone Number</strong></label>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="txt_phone" CssClass="text-danger" ValidationExpression="^\(\d{3}\)\s\d{3}-\d{4}" Text=" * Invalid Phone Number"></asp:RegularExpressionValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="txt_phone" CssClass="text-danger" ValidationExpression="^\(\d{3}\)\s\d{3}-\d{4}" Text=" Invalid Phone Number"></asp:RegularExpressionValidator>
                                     <asp:TextBox ID="txt_phone" ClientIDMode="Static" CssClass="form-control" runat="server"></asp:TextBox>
                                     <script type="text/javascript">
                                         jQuery(function ($) {
@@ -80,8 +81,8 @@
                         <div class="card border-primary">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label><strong>Is this your first time visiting Borrowed Hearts?</strong></label>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="RequiredFieldValidator" Text=" * This field is required" CssClass="text-danger" ControlToValidate="rbl_firstTime"></asp:RequiredFieldValidator>
+                                    <label><strong>Is this your first time visiting Borrowed Hearts?</strong></label><asp:Label ID="Label3" runat="server" Text=" * " Font-Bold="True" CssClass="text-danger"></asp:Label>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="RequiredFieldValidator" Text=" Required Field" CssClass="text-danger" ControlToValidate="rbl_firstTime"></asp:RequiredFieldValidator>
                                     <asp:RadioButtonList ID="rbl_firstTime" runat="server" CssClass="">
                                         <asp:ListItem Value="0">- No</asp:ListItem>
                                         <asp:ListItem Value="1">- Yes</asp:ListItem>
@@ -94,7 +95,8 @@
                         <div class="card border-info">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="txt_numberOfChildren"><strong>Number of children you are shopping for?</strong></label><asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage=" * Required Field" ControlToValidate="txt_numberOfChildren" CssClass="text-danger"></asp:RequiredFieldValidator>
+                                    <label for="txt_numberOfChildren"><strong>Number of children you are shopping for?</strong></label><asp:Label ID="Label4" runat="server" Text=" * " Font-Bold="True" CssClass="text-danger"></asp:Label>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Required Field" ControlToValidate="txt_numberOfChildren" CssClass="text-danger"></asp:RequiredFieldValidator>
                                     <asp:TextBox ID="txt_numberOfChildren" class="form-control" runat="server" placeholder="Enter number of children you're shopping for" TextMode="Number"></asp:TextBox>
                                 </div>
                             </div>
@@ -104,7 +106,8 @@
                         <div class="card border-primary">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="txt_caseWorker"><strong>Case Worker</strong></label><asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage=" * Required Field" ControlToValidate="txt_caseWorker" CssClass="text-danger"></asp:RequiredFieldValidator>
+                                    <label for="txt_caseWorker"><strong>Case Worker</strong><asp:Label ID="Label5" runat="server" Text=" * " Font-Bold="True" CssClass="text-danger"></asp:Label>
+                                    </label><asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Required Field" ControlToValidate="txt_caseWorker" CssClass="text-danger"></asp:RequiredFieldValidator>
                                     <asp:TextBox ID="txt_caseWorker" class="form-control" runat="server" placeholder="Enter name of case worker"></asp:TextBox>
                                 </div>
                             </div>
@@ -114,8 +117,8 @@
                         <div class="card border-info">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label><strong>Relationship to Children</strong></label> <%--Need to set as required field--%>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="rbl_relationship" Text=" * This field is required" CssClass="text-danger"></asp:RequiredFieldValidator>
+                                    <label><strong>Relationship to Children</strong></label><asp:Label ID="Label6" runat="server" Text=" * " Font-Bold="True" CssClass="text-danger"></asp:Label>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="rbl_relationship" Text="Required Field" CssClass="text-danger"></asp:RequiredFieldValidator>
                                     <asp:RadioButtonList ID="rbl_relationship" runat="server">
                                         <asp:ListItem Value="0">- Licensed Foster Parent</asp:ListItem>
                                         <asp:ListItem Value="1">- Relative or Kinship Placement</asp:ListItem>
@@ -134,6 +137,7 @@
                         </div>
                     </div>
                 </fieldset>
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server"></asp:UpdatePanel>
             </div>
         </div>
     </div>
