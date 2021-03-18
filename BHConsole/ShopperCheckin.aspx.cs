@@ -18,13 +18,14 @@ namespace BHConsole
 
         protected void btn_checkin_Click(object sender, EventArgs e)
         {
+
             if (Page.IsValid)
             {
                 int numberOfChildren;
                 int relationToChildren;
 
                 numberOfChildren = Convert.ToInt32(txt_numberOfChildren.Text);
-                if (numberOfChildren > 250)
+                if (numberOfChildren > 250 || numberOfChildren < 0)
                 {
                     numberOfChildren = 250;
                 }
@@ -32,9 +33,15 @@ namespace BHConsole
                 relationToChildren = rbl_relationship.SelectedIndex;
 
                 ShopperVisit shopperVisit = new ShopperVisit(txt_name.Text, txt_email.Text, txt_phone.Text, txt_address.Text, rbl_firstTime.SelectedIndex, numberOfChildren, txt_caseWorker.Text, relationToChildren, txt_other.Text);
-                ShopperVisit.CheckIn(shopperVisit, Connection.GetConnection().conn);
+                //ShopperVisit.CheckIn(shopperVisit, Connection.GetConnection().conn);
                 Response.Redirect("~/Default.aspx");
+            }
+            else
+            {
+                
             }
         }
     }
+
+    
 }

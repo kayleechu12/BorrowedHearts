@@ -20,12 +20,14 @@ namespace BHConsole
 
         protected void btn_clockout_Click(object sender, EventArgs e)
         {
-            if (dd_clockedin.SelectedValue != null)
+            if (dd_clockedin.SelectedItem != null)
             {
                 VolunteerTimePunch.ClockOut(Convert.ToInt64(dd_clockedin.SelectedValue), Connection.GetConnection().conn);
+                Response.Redirect("~/Volunteers.aspx");
             }
             //TODO: Redirect to dashboard or something
-            Response.Redirect("~/Volunteers.aspx");
+            
+
         }
     }
 }

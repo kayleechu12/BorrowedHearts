@@ -39,6 +39,9 @@ namespace BHConsole
 
             bundles.Add(new StyleBundle("~/Content/css/site").Include(
                 "~/Content/Site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                        "~/Scripts/jquery.validate.js"));
         }
     }
 }

@@ -12,6 +12,7 @@
         <%: Styles.Render("~/Content/css/minty") %>
         <%: Styles.Render("~/Content/css/site") %>
         <%: Scripts.Render("~/bundles/modernizr") %>
+        <%: Scripts.Render("~/bundles/jqueryval") %>
 
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css/minty" />
